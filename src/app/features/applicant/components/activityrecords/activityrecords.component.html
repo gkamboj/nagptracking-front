@@ -1,0 +1,20 @@
+<div class="bg-light rounded-0 m-3" *ngIf="activityRecords && activityRecords.length !=0; else noRecords">
+  <h1>Your Activity Record List</h1>
+  <div class="row" *ngFor="let activityRecord of activityRecords; let i = index">
+    <div class="col-md-1"></div>
+    <div class="col-md-8" >
+      <mat-card class = "bg-dark text-light rounded">
+      <h5 class="d-inline"><b>{{i+1}}. Activity:</b> {{activityRecord.activity.name}} <br><b> Status: </b>{{activityRecord.activityStatus}} <br>
+        <b>Started On:</b> {{activityRecord.startDate}}</h5>
+      <button mat-raised-button color="accent" class="float-right" [routerLink]="[activityRecord.applicantActivityId]">More</button>
+    </mat-card>
+    <br>
+  </div>
+  <div class="col-md-1"></div>
+</div>
+</div>
+<ng-template #noRecords>
+  <div class="bg-light rounded-0 m-3">
+    <h1>Your Activity Record List is Empty</h1>
+  </div>
+</ng-template>

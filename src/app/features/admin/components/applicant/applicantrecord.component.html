@@ -1,0 +1,26 @@
+<div *ngIf="records && records.length !=0; else noRecords">
+  <div class="row" *ngFor="let record of records; let i = index">
+    <div class="col-md-1"></div>
+    <div class="col-md-8">
+      <mat-card class = "bg-dark text-light rounded">
+        <h5 class="d-inline">{{i+1}}.{{record.activity.name}} of Level-{{record.applicant.level.number}}</h5>
+        <br>
+        Marked as <i>{{record.activityStatus}}</i>
+        <button mat-raised-button color="accent" class="float-right" routerLink="{{record.applicantActivityId}}">More</button>
+      </mat-card>
+      <br>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+<ng-template #noRecords>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-8">
+      <mat-card>
+        <h2>No records for selected applicant</h2>
+      </mat-card>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</ng-template>

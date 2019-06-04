@@ -1,0 +1,50 @@
+<div class="container-fluid bg-light">
+  <div class="container" *ngIf="record">
+    <mat-card style="padding:25px">
+      <mat-card-header>
+        <div class="p-4 text-center">
+          <h1 style="text-align: center" class="d-inline">Activity Record Detail</h1>
+          <hr>
+        </div>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="full-width">
+          <p>
+            Record Id: {{record.applicantActivityId}}
+          </p>
+          <p>
+            Level: Level-{{record.applicant.level.number}}. {{ record.applicant.level.name }}
+          </p>
+          <p>
+            Activity: {{record.activity.name}}
+          </p>
+          <p>
+            Status: {{record.activityStatus}}
+          </p>
+          <p>
+            Score: {{record.percentage}}
+          </p>
+          <p>
+            Points: {{record.points}}
+          </p>
+          <p>
+            Description: {{record.description}}
+          </p>
+          <p>
+            StartDate: {{record.startDate}}
+          </p>
+          <p>
+            DoneDate: {{record.doneDate}}
+          </p>
+          <p>
+            CompletionDate:{{record.completionDate}}
+          </p>
+          <p *ngIf="record.assignor">
+            Assigned By: {{record.assignor.name}} ({{record.assignor.userType}})
+          </p>
+        </div>
+        <button mat-raised-button color="primary" routerLink="edit">Edit This Record</button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

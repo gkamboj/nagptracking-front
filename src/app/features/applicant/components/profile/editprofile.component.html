@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-md-8">
+      <mat-card class="mt-2" *ngIf="applicantProfile">
+        <mat-card-header> <strong><h2>Edit Your Profile</h2></strong> </mat-card-header>
+        <hr>
+        <form class="example-form" autocomplete="off" (ngSubmit)="onSubmit()" [formGroup]="editForm">
+          <mat-card-content>
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Your Id" disabled value="{{this.applicantProfile.applicant.applicant.userId}}">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <input matInput type="text" formControlName="name" placeholder="Name">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <input matInput type="text" placeholder="Email Address"  disabled value="{{this.applicantProfile.applicant.applicant.email}}">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput type="password" formControlName="password" placeholder="Password">
+              </mat-form-field>
+            <mat-form-field class="full-width">
+              <input matInput type="number" formControlName="contactNo" placeholder="Contact No">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Your Id" disabled value="{{this.applicantProfile.applicant.applicant.userId}}">
+              </mat-form-field>
+            <mat-form-field class="full-width">
+              <input matInput disabled placeholder="current points" value="{{this.applicantProfile.accumulatedPoints}}">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <input matInput disabled placeholder="required points" value="{{this.applicantProfile.requiredPoints}}">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Your Level" disabled value="Level {{this.applicantProfile.applicant.level.number}}.{{this.applicantProfile.applicant.level.name}}">
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                  <input matInput placeholder="Your Batch" disabled value="Batch :{{this.applicantProfile.applicant.batch.batchName}}">
+                </mat-form-field>
+            <mat-card-actions *ngIf="isEdit">
+              <button mat-raised-button color="primary" type="submit">Edit Profile</button>
+            </mat-card-actions>
+          </mat-card-content>
+        </form>
+      </mat-card>
+    </div>
+    <div class="col-2 mt-2" *ngIf = "!isEdit">
+      <button mat-raised-button color="primary" (click)="isEdit=!isEdit">Edit</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-8" *ngIf="record">
+    <mat-card style="color: #11144c">
+      <mat-card-header><h3>Edit Record Details</h3></mat-card-header>
+      <mat-card-content>
+          <form  autocomplete="off" (ngSubmit)="onSubmit()" [formGroup]="editForm">
+              <mat-card-content>
+                <mat-form-field class="full-width" *ngIf="id!=0">
+                  <input matInput placeholder="Record Id" disabled value="{{record.applicantActivityId}}">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                  <input matInput type="text" placeholder="Name" value="{{record.applicant.applicant.name}}" disabled>
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <input matInput type="text" placeholder="Level" disabled
+                      value="{{record.applicant.level.levelId}}.{{record.applicant.level.name}}">
+                  </mat-form-field>
+                <mat-form-field class="full-width">
+                  <input matInput type="text" placeholder="Activity" disabled value="{{record.activity.name}}">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                  <input matInput type="text" placeholder="Description" 
+                  formControlName="description">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <input matInput type="number" placeholder="Score" 
+                   disabled value="{{record.percentage}}">
+                  </mat-form-field>
+                <mat-form-field class="full-width" *ngIf = "!disabled;else disabledStatus">
+                  <mat-label>Status</mat-label>
+                  <mat-select formControlName="activityStatus">
+                    <mat-option *ngFor="let sta of statuses; let i = index" [value]="statuses[i]">
+                      {{stat}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <ng-template #disabledStatus>
+                    <mat-form-field class="full-width">
+                        <input matInput type="text" placeholder="Status" disabled value="{{record.activityStatus}}">
+                      </mat-form-field>
+                </ng-template>
+                
+                <mat-form-field class="full-width" *ngIf="this.record.startDate">
+                    <input matInput type="date" placeholder="Start Date" value="this.record.startDate"
+                    disabled>
+                  </mat-form-field>
+                  <mat-form-field class="full-width" *ngIf="this.record.doneDate">
+                      <input matInput type="date" placeholder="Done Date" value="this.record.doneDate"
+                      disabled>
+                    </mat-form-field>
+                    <mat-form-field class="full-width" *ngIf = "this.record.completionDate">
+                        <input matInput type="date" placeholder="Completion Date" value="this.record.completionDate"
+                        disabled>
+                      </mat-form-field>
+    
+                <mat-card-actions>
+                  <button mat-raised-button color="primary" type="submit">Update Record</button>
+                </mat-card-actions>
+              </mat-card-content>
+    
+            </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-md-1"></div>
+</div>

@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-md-8">
+      <mat-card class="mt-5" *ngIf="applicant || id==0">
+        <mat-card-header>
+          <h2>{{action}} Applicant</h2>
+        </mat-card-header>
+        <hr>
+        <form class="example-form" autocomplete="off" (ngSubmit)="onSubmit()" [formGroup]="editForm">
+          <mat-card-content>
+            <div *ngIf="isAdd; else editform">
+
+              <mat-form-field class="full-width">
+                <input matInput type="text" formControlName="name" placeholder="Name">
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <input matInput type="email" formControlName="email" placeholder="Email">
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <input matInput type="number" formControlName="contactNo" placeholder="Contact Number">
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <input matInput type="password" placeholder="Password" disabled value="password">
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <mat-label>Batch</mat-label>
+                <mat-select formControlName="batch">
+                  <mat-option *ngFor="let batch of batches;let i = index" [value]="batches[i].batchId">
+                    {{batch.batchName}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <input matInput type="text" placeholder="Level" disabled value="Level 1">
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <input matInput type="text" placeholder="Status" disabled value="ASPIRING">
+              </mat-form-field>
+            </div>
+            <ng-template #editform>
+              <mat-form-field class="full-width" *ngIf="id!=0">
+                <input matInput placeholder="Applicant Id" disabled value="{{applicant.applicant.userId}}">
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <input matInput type="text" placeholder="Name" value="{{applicant.applicant.name}}" disabled>
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <input matInput type="email" placeholder="Email" disabled value="{{applicant.applicant.email}}">
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <input matInput type="number" placeholder="Contact Number" disabled
+                  value="{{applicant.applicant.contactNo}}">
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <input matInput type="text" placeholder="Password" disabled value="{{applicant.applicant.password}}">
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <input matInput type="text" placeholder="Batch" disabled value="{{applicant.batch.batchName}}">
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <input matInput type="text" placeholder="Level" disabled
+                  value="{{applicant.level.levelId}}. {{applicant.level.name}}">
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="nagpStatus">
+                  <mat-option *ngFor="let sta of statuses; let i = index" [value]="statuses[i]">
+                    {{sta}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </ng-template>
+
+            <mat-card-actions>
+              <button mat-raised-button color="primary" type="submit">{{action}}</button>
+            </mat-card-actions>
+          </mat-card-content>
+
+        </form>
+      </mat-card>
+    </div>
+    <div class="col-2"></div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<mat-card class="example-card mt-5 ml-3 mr-2">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Applicant Login</mat-card-title>
+  </mat-card-header>
+    <form class="example-form" autocomplete="off" (ngSubmit)="onSubmit()" [formGroup]="msgForm">
+  <mat-card-content>
+      <mat-form-field class="fields">
+        <input matInput type="email" formControlName="email" placeholder="Email Address">
+      </mat-form-field>
+      <mat-form-field class="fields">
+        <input matInput type="password" formControlName="password" placeholder="Password">
+      </mat-form-field>
+      <!-- <div class="float-right">
+        <button color="primary" type="submit" mat-raised-button>Login</button>
+        <button color="warn" type="reset" mat-raised-button>Clear</button>
+      </div> -->
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Login</button>
+      <button mat-raised-button color="warn" type="reset" >Clear</button>
+    </mat-card-actions>
+  </form>
+</mat-card>

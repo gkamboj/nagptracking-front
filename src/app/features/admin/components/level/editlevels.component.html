@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-md-8">
+            <mat-card class="mt-5" *ngIf="level || id == 0">
+                <mat-card-header> {{action}} Level </mat-card-header>
+                <hr>
+                <form autocomplete="off" (ngSubmit)="onSubmit()" [formGroup]="editForm">
+                    <mat-card-content>
+                        <div *ngIf="isAdd; else editform">
+                            <mat-form-field class="full-width">
+                                <input matInput type="number" formControlName="number" placeholder="Number">
+                            </mat-form-field>
+                            <mat-form-field class="full-width">
+                                <input matInput type="text" formControlName="name" placeholder="Name">
+                            </mat-form-field>
+                            <mat-form-field class="full-width">
+                                <input matInput type="text" formControlName="description"
+                                    placeholder="Description for Level">
+                            </mat-form-field>
+                            <mat-form-field class="full-width">
+                                <input matInput type="number" formControlName="qualificationPoints"
+                                    placeholder="Qualification points">
+                            </mat-form-field>
+                        </div>
+                        <ng-template #editform>
+                            <mat-form-field class="full-width">
+                                <input matInput placeholder="Level Id" disabled value="{{level.levelId}}">
+                            </mat-form-field>
+                            <mat-form-field class="full-width">
+                                <input matInput type="number" placeholder="Number" disabled value="{{level.number}}">
+                            </mat-form-field>
+                            <mat-form-field class="full-width">
+                                <input matInput type="text" placeholder="Name" disabled value="{{level.name}}">
+                            </mat-form-field>
+                            <mat-form-field class="full-width">
+                                <input matInput type="text" formControlName="description"
+                                    placeholder="Description for Level">
+                            </mat-form-field>
+                            <mat-form-field class="full-width">
+                                <input matInput type="number" formControlName="qualificationPoints"
+                                    placeholder="Qualification points">
+                            </mat-form-field>
+                        </ng-template>
+
+
+
+
+                        <mat-card-actions>
+                            <button mat-raised-button color="primary" type="submit">{{action}}</button>
+                        </mat-card-actions>
+                    </mat-card-content>
+
+                </form>
+            </mat-card>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>

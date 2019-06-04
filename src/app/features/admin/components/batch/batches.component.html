@@ -1,0 +1,33 @@
+<div class="container">
+    <div>
+      <h1 class = "d-inline">Batches</h1>
+      <button class="btn btn-success float-md-right" [routerLink]='[0,"edit"]'>Add Batch</button>
+    </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" *ngFor="let batch of batches; let i = index">
+      <mat-card class="mt-4">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{i+1}}</mat-card-title>
+          <mat-card-subtitle>Batch Name: {{batch.batchName}}</mat-card-subtitle>
+          <!-- <mat-card-subtitle>Level name: {{level.name}}</mat-card-subtitle> -->
+        </mat-card-header>
+        <img [src]="">
+        <hr>
+        <mat-card-content>
+          <p>
+            Description: {{batch.description}}
+          </p>
+          <p>
+            Start Date: {{batch.startDate}}
+          </p>
+        </mat-card-content>
+        <hr>
+        <mat-card-actions>
+          <button mat-raised-button [routerLink]="batch.batchId">More</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

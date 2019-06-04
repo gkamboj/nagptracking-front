@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-md-8">
+            <mat-card class="mt-5" *ngIf = "batch || id==0">
+                <mat-card-header> {{action}} Batch </mat-card-header>
+                <hr>
+                <form class="example-form" autocomplete="off" (ngSubmit)="onSubmit()" [formGroup]="editForm">
+                    <mat-card-content>
+                        <mat-form-field class="full-width" *ngIf="id!=0">
+                            <input matInput placeholder="Batch Id" disabled value="{{batch.batchId}}">
+                        </mat-form-field>
+                        <mat-form-field class="full-width">
+                            <input matInput type="number" formControlName="year" placeholder="Year">
+                        </mat-form-field>
+                        <mat-form-field class="full-width">
+                            <mat-select formControlName="batchTechnology" placeholder="Technology">
+                                <mat-option *ngFor="let tech of technologies;let i = index" [value]="technologies[i]">
+                                  {{tech}}
+                                </mat-option>
+                              </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="full-width">
+                            <input matInput type="text" formControlName="description"
+                                placeholder="Description for Batch">
+                        </mat-form-field>
+                        <mat-form-field class="full-width">
+                            <input matInput type="date" formControlName="startDate"
+                                placeholder="Start Date">
+                        </mat-form-field>
+                        <mat-card-actions>
+                                <button mat-raised-button color="primary" type="submit">{{action}}</button>
+                            </mat-card-actions>
+                    </mat-card-content>
+                
+            </form>
+            </mat-card>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>

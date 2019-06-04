@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row" *ngIf="applicant">
+      <div class="col-md-4"></div>
+      <div class="col-md-4" >
+        <mat-card class="example-card rounded" style="background-color:#484848;color: whitesmoke">
+          <mat-card-header style="background-color:whitesmoke;color: #484848" class="rounded">
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>
+              <h1>Name: {{applicant.applicant.name}}</h1>
+            </mat-card-title>
+  
+          </mat-card-header>
+  
+          <mat-card-content>
+            <hr>
+            <p>
+              Email: {{applicant.applicant.email}}
+            </p>
+            <p>
+              Contact Number: {{applicant.applicant.contactNo}}
+            </p>
+            <p>
+              NAGP Status: {{applicant.nagpStatus}}
+            </p>
+            <p>
+              Batch: {{applicant.batch.batchId}}
+            </p>
+            <p>
+              Level: {{applicant.level.levelId}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button style="color:#484848" [routerLink]="['edit']">Edit</button>
+            <!-- <button mat-raised-button color="warn">Delete</button> -->
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div class="col-md-4">
+        <mat-card style="background-color:#484848">
+          <mat-card-header>
+            <mat-card-title></mat-card-title>
+          </mat-card-header>
+          <mat-card-content style="color:whitesmoke">
+              <button mat-raised-button color="accent" style="color:whitesmoke" [routerLink]="['record']">Activity Details</button> for {{applicant.applicant.name}}
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>

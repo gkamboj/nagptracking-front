@@ -1,0 +1,5 @@
+/* @import './customStyles.scss'; */
+.error-snackbar{
+    color:wheat;
+    background-color: royalblue;
+}
